@@ -1,0 +1,9 @@
+database:
+    userManagement:
+      mysql:
+        host: localhost
+        port: 3306
+        username: root
+        password: 
+        name: ibm_user_management
+        adapter: mysql
