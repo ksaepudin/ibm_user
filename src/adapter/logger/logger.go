@@ -1,10 +1,7 @@
 package logger
 
 import (
-	"encoding/json"
 	"errors"
-
-	utilMd "ibm_users_accsess_management/src/shared/util/metadata"
 
 	"google.golang.org/grpc/codes"
 )
@@ -71,29 +68,29 @@ func NewLogger(config Configuration, loggerInstance int) error {
 	}
 }
 
-func WriteLog(level string, payload interface{}, m utilMd.MetaData, typeLog, desc, method, logId string, code codes.Code) {
-	//p, _ := externalIP()
-	data, _ := json.Marshal(payload)
-	contextLogger := WithFields(Fields{
-		"type":       typeLog,
-		"payload":    string(data),
-		"method":     method,
-		"clientname": m.ClientName,
-		"clientip":   m.ClientIP,
-		"logid":      logId,
-		"status":     code})
+// func WriteLog(level string, payload interface{}, m utilMd.MetaData, typeLog, desc, method, logId string, code codes.Code) {
+// 	//p, _ := externalIP()
+// 	data, _ := json.Marshal(payload)
+// 	contextLogger := WithFields(Fields{
+// 		"type":       typeLog,
+// 		"payload":    string(data),
+// 		"method":     method,
+// 		"clientname": m.ClientName,
+// 		"clientip":   m.ClientIP,
+// 		"logid":      logId,
+// 		"status":     code})
 
-	switch level {
-	case Info:
-		contextLogger.Infof(desc)
-	case Error:
-		contextLogger.Errorf(desc)
-	case Debug:
-		contextLogger.Debugf(desc)
-	default:
-		contextLogger.Infof(desc)
-	}
-}
+// 	switch level {
+// 	case Info:
+// 		contextLogger.Infof(desc)
+// 	case Error:
+// 		contextLogger.Errorf(desc)
+// 	case Debug:
+// 		contextLogger.Debugf(desc)
+// 	default:
+// 		contextLogger.Infof(desc)
+// 	}
+// }
 
 func Debugf(format string, args ...interface{}) {
 	log.Debugf(format, args...)
