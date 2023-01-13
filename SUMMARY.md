@@ -1,3 +1,4 @@
 # Table of contents
 
-* (README.md)
+* [README](README.md)
+* [(README.md)](readme.md.md)
